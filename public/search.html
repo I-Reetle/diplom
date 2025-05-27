@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Discover music, artists, and tracks on Last.fm">
-  <meta name="theme-color" content="#000000">
-  <link rel="icon" href="%PUBLIC_URL%/favicon.ico">
-  <link rel="stylesheet" href="styles.css">
-  <title>Music | Last.fm</title>
-</head>
-<body>
-  <header class="site-header">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="stylesheet" href="styles.css">
+    <title>React App</title>
+  </head>
+  <body>
+     <header class="site-header">
     <div class="header-container">
       <a href="index.html" class="logo-link">
         <img src="img/logo/logo.png" alt="Last.fm" class="logo">
@@ -21,12 +23,12 @@
           <li class="nav-item">
             <a href="search.html" class="nav-link icon-link">
               <img src="img/icons/search.svg" alt="Search" class="nav-icon">
-              <span class="sr-only">Search</span>
+              <span class="sr-only active">Search</span>
             </a>
           </li>
           <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
           <li class="nav-item"><a href="#" class="nav-link">Live</a></li>
-          <li class="nav-item"><a href="#" class="nav-link active">Music</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">Music</a></li>
           <li class="nav-item"><a href="#" class="nav-link">Charts</a></li>
           <li class="nav-item"><a href="#" class="nav-link">Events</a></li>
           <li class="nav-item"><a href="#" class="nav-link">Features</a></li>
@@ -34,49 +36,89 @@
       </nav>
     </div>
   </header>
+    <main class="search-results-page">
+    <header class="search-header">
+      <h1 class="search-title">Search results for "never gonna give you up"</h1>
+      <nav class="search-tabs">
+        <ul class="tab-list">
+          <li class="tab-item active"><a href="#" class="tab-link">Top Results</a></li>
+          <li class="tab-item"><a href="#" class="tab-link">Artists</a></li>
+          <li class="tab-item"><a href="#" class="tab-link">Albums</a></li>
+          <li class="tab-item"><a href="#" class="tab-link">Tracks</a></li>
+        </ul>
+      </nav>
+    </header>
 
-  <main class="content">
-    <h1 class="page-title">Music</h1>
-    
-    <section class="featured-section trending-artists">
-      <h2 class="section-title">Hot right now</h2>
-      <div class="grid-container artists-grid">
-        <article class="artist-card">
-          <a href="#" class="artist-link">
-            <img src="img/artists/pbc.png" alt="Playboy Carti" class="artist-image">
-          </a>
-          <h3 class="artist-name">Playboy Carti</h3>
-          <div class="genre-tags">
-            <span class="genre-tag">rap</span>
-            <span class="genre-tag">cloud rap</span>
-            <span class="genre-tag">trap</span>
-          </div>
-        </article>
-      </div>
-    </section>
-    
-    <section class="featured-section popular-tracks">
-      <h2 class="section-title">Popular tracks</h2>
-      <div class="grid-container tracks-grid">
-        <article class="track-card">
-          <a href="#" class="track-link">
-            <img src="img/tracks/sky.png" alt="anime tyanka" class="track-cover">
-          </a>
-          <div class="track-details">
-            <h3 class="track-title">Sky</h3>
-            <p class="track-artist">Playboy Carti</p>
-            <div class="genre-tags">
-              <span class="genre-tag">k-pop</span>
-              <span class="genre-tag">trap</span>
-              <span class="genre-tag">soty</span>
+    <div class="search-container">
+      <form class="search-form" id="searchForm">
+        <div class="search-input-group">
+          <input type="text" class="search-field" placeholder="never gonna give you up" value="never gonna give you up">
+          <button type="button" class="clear-btn" aria-label="Clear search">
+            <img src="img/icons/clear_field.png" alt="">
+          </button>
+          <button type="submit" class="search-btn" aria-label="Search">
+            <img src="img/icons/search_dark.png" alt="">
+          </button>
+        </div>
+      </form>
+
+      <section class="search-section artists-section">
+        <h2 class="section-title">Artists</h2>
+        <div class="artist-grid">
+          <article class="artist-card">
+            <img src="img/artists/pbc.png" alt="" class="artist-img">
+            <div class="artist-info">
+              <h3 class="artist-name"><a href="#">Never Gonna Give You Up</a></h3>
+              <p class="artist-stats">1,751 listeners</p>
             </div>
-          </div>
-        </article>
-      </div>
-    </section>
-  </main>
+          </article>
+        </div>
+        <a href="#" class="view-more-link">
+          More artists
+          <img src="img/icons/arrow_small_right.png" alt="" class="arrow-icon">
+        </a>
+      </section>
 
-  <footer class="site-footer">
+      <section class="search-section albums-section">
+        <h2 class="section-title">Albums</h2>
+        <div class="album-grid">
+          <article class="album-card">
+            <img src="img/artists/pbc.png" alt="" class="album-cover">
+            <div class="album-info">
+              <h3 class="album-title"><a href="#">Never Gonna Give You Up</a></h3>
+              <p class="album-artist">Mac Beez</p>
+            </div>
+          </article>
+        </div>
+        <a href="#" class="view-more-link">
+          More albums
+          <img src="img/icons/arrow_small_right.png" alt="" class="arrow-icon">
+        </a>
+      </section>
+
+      <section class="search-section tracks-section">
+        <h2 class="section-title">Tracks</h2>
+        <div class="track-list">
+          <article class="track-item">
+            <button class="play-btn" aria-label="Play">
+              <img src="img/icons/play_dark.png" alt="">
+            </button>
+            <img src="img/tracks/sky.png" alt="" class="track-art">
+            <div class="track-details">
+              <h3 class="track-title">Never Gonna Give You Up</h3>
+              <p class="track-artist">Rick Astley</p>
+            </div>
+            <time class="track-duration">3:33</time>
+          </article>
+        </div>
+        <a href="#" class="view-more-link">
+          More tracks
+          <img src="img/icons/arrow_small_right.png" alt="" class="arrow-icon">
+        </a>
+      </section>
+    </div>
+  </main>
+    <footer class="site-footer">
     <div class="footer-container">
       <div class="footer-links-container">
         <section class="footer-section">
@@ -155,6 +197,6 @@
     </div>
   </footer>
 
-  <script src="index.js"></script>
-</body>
+    <script src="search.js"></script>
+  </body>
 </html>
