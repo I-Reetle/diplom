@@ -1,0 +1,552 @@
+:root {
+  --primary-color: #ff0000;
+  --secondary-color: #000000;
+  --background-color: #ffffff;
+  --text-color: #000000;
+  --light-gray: #f5f5f5;
+  --dark-gray: #333333;
+  --border-color: #e0e0e0;
+}
+
+/* Base Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+/* Header Styles */
+.site-header {
+  background-color: var(--secondary-color);
+  padding: 1rem 2rem;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo {
+  height: 40px;
+}
+
+.main-nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 1.5rem;
+}
+
+.nav-link {
+  color: var(--background-color);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: var(--primary-color);
+}
+
+.icon-link {
+  display: flex;
+  align-items: center;
+}
+
+.nav-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* Main Content */
+.content, .search-results-page {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.page-title, .search-title {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 0.5rem;
+  display: inline-block;
+}
+
+/* Card Styles - Unified */
+.artist-card, .album-card, .track-card {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  background: var(--background-color);
+}
+
+.artist-card:hover, .album-card:hover, .track-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+
+/* Image Containers */
+.artist-img-container, .album-cover-container, .track-art-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.artist-img, .album-cover, .track-art {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.track-art {
+  height: 60px;
+  width: 60px;
+}
+
+.artist-card:hover .artist-img, 
+.album-card:hover .album-cover, 
+.track-card:hover .track-art {
+  transform: scale(1.05);
+}
+
+/* Card Content */
+.artist-info, .album-info, .track-details {
+  padding: 12px;
+}
+
+.artist-name, .album-title, .track-title {
+  margin: 0 0 8px 0;
+  font-size: 1rem;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.artist-name a, .album-title a {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.artist-name a:hover, .album-title a:hover {
+  color: var(--primary-color);
+}
+
+.artist-listeners, .album-artist, .track-artist {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--dark-gray);
+}
+
+.track-card {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden; /* Важно - обрезает все, что выходит за границы */
+  transition: all 0.3s ease;
+  background: var(--background-color);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.track-link {
+  display: block;
+  position: relative;
+}
+
+.track-cover {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.track-card:hover .track-cover {
+  transform: scale(1.03);
+}
+
+.track-details {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 0; /* Важно для работы text-overflow */
+}
+
+.track-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 6px 0;
+  color: var(--text-color);
+  width: 100%;
+  padding: 0 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-sizing: border-box; /* Учитываем padding в ширине */
+}
+
+.track-artist {
+  font-size: 0.875rem;
+  color: var(--dark-gray);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.genre-tags {
+  margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  justify-content: center;
+  max-width: 100%; /* Не выходит за границы карточки */
+  overflow: hidden;
+}
+
+.genre-tag {
+  font-size: 0.75rem;
+  padding: 2px 6px;
+  background-color: var(--light-gray);
+  border-radius: 12px;
+  color: var(--dark-gray);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+/* Play Button Overlay */
+.play-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.track-card:hover .play-overlay {
+  opacity: 1;
+}
+
+.play-icon {
+  width: 40px;
+  height: 40px;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+
+/* Grid Layouts */
+.grid-container, .artist-grid, .album-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.track-list {
+  display: grid;
+  gap: 0.5rem;
+}
+
+/* Search Components */
+.search-input-group {
+  display: flex;
+  max-width: 600px;
+  margin-bottom: 2rem;
+}
+
+.search-field {
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-right: none;
+}
+
+.search-btn, .clear-btn {
+  padding: 10px;
+  background: var(--light-gray);
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+}
+
+.search-btn {
+  border-left: none;
+  border-radius: 0 4px 4px 0;
+}
+
+.clear-btn {
+  border-right: none;
+}
+
+/* Footer Styles */
+.site-footer {
+  background-color: var(--secondary-color);
+  color: var(--background-color);
+  padding: 2rem;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-links-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.footer-link {
+  color: var(--background-color);
+  text-decoration: none;
+  display: block;
+  margin-bottom: 0.5rem;
+  transition: color 0.3s;
+}
+
+.footer-link:hover {
+  color: var(--primary-color);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+  }
+  
+  .main-nav ul {
+    margin-top: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .grid-container, .artist-grid, .album-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+  
+  .track-card {
+    padding: 8px;
+  }
+  
+  .track-art {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+/* Accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.search-header {
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1rem;
+}
+
+.search-title {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-color);
+}
+
+/* Improved Tabs Styling */
+.search-tabs {
+  margin-bottom: 2rem;
+}
+
+.tab-list {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 0.5rem;
+  border-bottom: 2px solid var(--light-gray);
+}
+
+.tab-item {
+  position: relative;
+  margin-bottom: -2px; /* Align with border */
+}
+
+.tab-link {
+  display: block;
+  padding: 0.75rem 1.5rem;
+  color: var(--dark-gray);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: 4px 4px 0 0;
+  transition: all 0.3s ease;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.tab-link:hover {
+  color: var(--primary-color);
+  background-color: rgba(255, 0, 0, 0.05);
+}
+
+.tab-item.active .tab-link {
+  color: var(--primary-color);
+  background-color: var(--background-color);
+  border-bottom: 3px solid var(--primary-color);
+}
+
+/* Search Form Improvements */
+.search-container {
+  margin-bottom: 3rem;
+}
+
+.search-form {
+  margin-bottom: 2.5rem;
+}
+
+.search-input-group {
+  display: flex;
+  max-width: 600px;
+  border: 1px solid var(--border-color);
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.search-input-group:focus-within {
+  box-shadow: 0 4px 12px rgba(255,0,0,0.15);
+  border-color: var(--primary-color);
+}
+
+.search-field {
+  flex: 1;
+  padding: 0.875rem 1.25rem;
+  border: none;
+  font-size: 1rem;
+  outline: none;
+}
+
+.search-btn, .clear-btn {
+  background: none;
+  border: none;
+  padding: 0 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.search-btn {
+  background-color: var(--primary-color);
+}
+
+.search-btn img, .clear-btn img {
+  width: 20px;
+  height: 20px;
+}
+
+/* Sections Styling */
+.search-section {
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--light-gray);
+}
+
+.search-section:last-child {
+  border-bottom: none;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  color: var(--text-color);
+}
+
+.section-title::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background-color: var(--border-color);
+  margin-left: 1rem;
+}
+
+/* View More Link */
+.view-more-link {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 1rem;
+  color: var(--primary-color);
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.view-more-link:hover {
+  transform: translateX(4px);
+}
+
+.arrow-icon {
+  margin-left: 0.5rem;
+  transition: transform 0.2s ease;
+}
+
+.view-more-link:hover .arrow-icon {
+  transform: translateX(2px);
+}
+
+.view-more-btn {
+  display: block;
+  margin: 1.5rem auto 0;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.view-more-btn:hover {
+  background-color: #e60000; /* Темнее на 10% */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.view-more-btn:active {
+  transform: translateY(0);
+}
